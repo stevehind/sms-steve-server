@@ -53,7 +53,9 @@ def sms_steve():
         print(message.sid)
 
         if custom:
-            return jsonify("Custom message sent to Steve."), 200
+            response = flask.jsonify("Custom message sent to Steve.")
+            response.headers.add('Access-Control-Allow-Origin', "*")
+            return response, 200
         else:
             return jsonify("Default message sent to Steve."), 200
     
