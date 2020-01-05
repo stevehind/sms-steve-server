@@ -8,7 +8,7 @@ from message_helper import message_helper
 from create_twilio_message import create_twilio_message
 
 # Set up authentication
-project_folder = os.path.expanduser('~/Google Drive/Programming/twilio-test')
+project_folder = os.path.expanduser('~/Google Drive/Programming/sms-steve-backend')
 load_dotenv(os.path.join(project_folder, '.env'))
 account_sid = os.getenv('ACCOUNT_SID')
 auth_token = os.getenv('AUTH_TOKEN')
@@ -53,7 +53,7 @@ def sms_steve():
         print(message.sid)
 
         if custom:
-            response = flask.jsonify("Custom message sent to Steve.")
+            response = jsonify("Custom message sent to Steve.")
             response.headers.add('Access-Control-Allow-Origin', "*")
             return response, 200
         else:

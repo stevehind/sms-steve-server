@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 
 # Create auth and configure numbers
-project_folder = os.path.expanduser('~/Google Drive/Programming/twilio-test')
+project_folder = os.path.expanduser('~/Google Drive/Programming/sms-steve-backend')
 load_dotenv(os.path.join(project_folder, '.env'))
 account_sid = os.getenv('ACCOUNT_SID')
 auth_token = os.getenv('AUTH_TOKEN')
