@@ -37,6 +37,9 @@ def sms_steve():
     # Handle the input and configure the message
     try:
         request_data = json.loads(request.data)
+
+        print(request_data)
+
         input_text = request_data['message']
         name = request_data['name']
         sender_number = request_data['number']
