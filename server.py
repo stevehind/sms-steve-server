@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, jsonify
+from flask_cors import CORS
 from twilio.rest import Client
 import os
 from dotenv import load_dotenv
@@ -24,6 +25,7 @@ app = Flask(
     static_folder="build/static",
     template_folder="build"
 )
+cors = CORS(app, resources={r"/sms-steve": {"origins": "*"}})
 
 @app.route("/", methods = ['GET'])
 def home():
