@@ -32,7 +32,7 @@ def home():
     return "This is an Easter Egg. Happy Easter. Go to https://stevehind.me"
 
 # Send a message to Steve
-@app.route("/web-sms", methods = ['GET', 'POST', 'OPTIONS'])
+@app.route("/web-sms", methods = ['GET', 'POST'])
 def sms_steve():
     custom = False
 
