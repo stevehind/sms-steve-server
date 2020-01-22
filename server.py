@@ -25,7 +25,6 @@ app = Flask(
     static_folder="build/static",
     template_folder="build"
 )
-cors = CORS(app, resources={r"/sms-steve": {"origins": "*"}})
 
 @app.route("/", methods = ['GET'])
 def home():
@@ -33,6 +32,7 @@ def home():
 
 # Send a message to Steve
 @app.route("/web-sms", methods = ['GET', 'POST'])
+@cross_origin()
 def sms_steve():
     custom = False
 
