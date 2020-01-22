@@ -34,7 +34,7 @@ def home():
 # Handle the pre-validation from browser
 @app.route("/web-sms", methods = ['OPTIONS'])
 def sms_options():
-    return 200, "This route exists."
+    return jsonify("This message exists."), 200
 
 # Send a message to Steve
 @app.route("/web-sms", methods = ['GET', 'POST'])
