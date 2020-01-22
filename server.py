@@ -31,6 +31,11 @@ CORS(app)
 def home():
     return "This is an Easter Egg. Happy Easter. Go to https://stevehind.me"
 
+# Handle the pre-validation from browser
+@app.route("/web-sms", methods = ['OPTIONS'])
+def sms_options():
+    return 200, "This route exists."
+
 # Send a message to Steve
 @app.route("/web-sms", methods = ['GET', 'POST'])
 def sms_steve():
