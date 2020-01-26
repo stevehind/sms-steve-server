@@ -25,19 +25,19 @@ app = Flask(
     static_folder="build/static",
     template_folder="build"
 )
-CORS(app)
+CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000/", "https://stevehind.github.io/sms-steve/"]}})
 
 @app.route("/", methods = ['GET'])
 def home():
     return "This is an Easter Egg. Happy Easter. Go to https://stevehind.me"
 
 # Handle the pre-validation from browser
-@app.route("/web-sms", methods = ['OPTIONS'])
+@app.route("/api/v1/web-sms", methods = ['OPTIONS'])
 def sms_options():
     return jsonify("This message exists."), 200
 
 # Send a message to Steve
-@app.route("/web-sms", methods = ['GET', 'POST'])
+@app.route("/api/v1/web-sms", methods = ['GET', 'POST'])
 def sms_steve():
     custom = False
 
@@ -77,7 +77,7 @@ def sms_steve():
 # DEPLOYED: twilio phone-numbers:update "+12244878383" --sms-url="https://sms-22448-steve.herokuapp.com/sms"
 
 # Reply to inbound messages
-@app.route("/sms", methods = ['GET', 'POST'])
+@app.route("api/v1/sms", methods = ['GET', 'POST'])
 def reply_to_sms():
     # Give a contextual reply to the inbound
     try:
