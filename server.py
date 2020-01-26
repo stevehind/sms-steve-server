@@ -77,7 +77,7 @@ def sms_steve():
 # DEPLOYED: twilio phone-numbers:update "+12244878383" --sms-url="https://sms-22448-steve.herokuapp.com/sms"
 
 # Reply to inbound messages
-@app.route("api/v1/sms", methods = ['GET', 'POST'])
+@app.route("/api/v1/sms", methods = ['GET', 'POST'])
 def reply_to_sms():
     # Give a contextual reply to the inbound
     try:
