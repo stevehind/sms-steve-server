@@ -25,8 +25,7 @@ app = Flask(
     static_folder="build/static",
     template_folder="build"
 )
-CORS(app, resources={r"/api/*": {"origins": "*"}})
-# ["http://localhost:3000/", "https://stevehind.github.io/sms-steve/"]
+CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000/", "https://stevehind.github.io/sms-steve/"]}})
 
 @app.route("/", methods = ['GET'])
 def home():
