@@ -104,3 +104,4 @@ def reply_to_sms():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug = True)
+    app.config['CORS_HEADERS'] = 'Content-Type'
