@@ -27,7 +27,7 @@ app = Flask(
 )
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-cors = CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000/", "https://stevehind.github.io/sms-steve/"]}})
+CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000/", "https://stevehind.github.io/sms-steve/"]}})
 
 @app.route("/", methods = ['GET'])
 def home():
@@ -35,13 +35,11 @@ def home():
 
 # Handle the pre-validation from browser
 @app.route("/api/v1/web-sms", methods = ['OPTIONS'])
-@cross_origin(origin = 'localhost', headers=['Content-Type', 'Authorization'])
 def sms_options():
     return jsonify("This message exists."), 200
 
 # Send a message to Steve
 @app.route("/api/v1/web-sms", methods = ['GET', 'POST'])
-@cross_origin(origin = 'localhost', headers=['Content-Type', 'Authorization'])
 def sms_steve():
     custom = False
 
