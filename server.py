@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template, jsonify
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from twilio.rest import Client
 import os
 from dotenv import load_dotenv
@@ -25,9 +25,12 @@ app = Flask(
     static_folder="build/static",
     template_folder="build"
 )
-CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000/", "https://stevehind.github.io/sms-steve/"]}})
+app.config['CORS_HEADERS'] = 'Content-Type'
+
+cors = CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000/", "https://stevehind.github.io/sms-steve/"]}})
 
 @app.route("/", methods = ['GET'])
+@cross_origin(origin = 'localhost', headers=['Content-Type', 'Authorization'])
 def home():
     return "This is an Easter Egg. Happy Easter. Go to https://stevehind.me"
 
@@ -104,4 +107,3 @@ def reply_to_sms():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug = True)
-    app.config['CORS_HEADERS'] = 'Content-Type'
