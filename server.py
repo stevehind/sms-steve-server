@@ -27,7 +27,8 @@ app = Flask(
 )
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-CORS(app, resources={r"/api/*": {"origins": ["http://localhost:3000/", "https://stevehind.github.io/sms-steve/"]}})
+CORS(app, resources={r"/api/*": {"origins": "*"}})
+# TODO: figure out how to limit the origins without breaking the dumb app. ["http://localhost:3000/", "https://stevehind.github.io/sms-steve/"]
 
 @app.route("/", methods = ['GET'])
 def home():
